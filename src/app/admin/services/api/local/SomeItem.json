@@ -1,0 +1,5 @@
+{
+  "@odata.context": "http://localhost:2000/odata/$metadata#SomeItems",
+  "@odata.count": 11,
+  "value": [{"id":0,"name":"8XW0QyfOSA"},{"id":1,"name":"fbcQsc0JzN"},{"id":2,"name":"p39Udub19N"},{"id":3,"name":"fJZ01ZthQG"},{"id":4,"name":"CmpQ1hsZ9U"},{"id":5,"name":"CtvPnNYsov"},{"id":6,"name":"oFa4tV11VG"},{"id":7,"name":"eqGqdWEosd"},{"id":8,"name":"JETgD3PQLb"},{"id":9,"name":"Tc8XzrtHEN"},{"id":10,"name":"TPdaZrPhAk"}]
+}

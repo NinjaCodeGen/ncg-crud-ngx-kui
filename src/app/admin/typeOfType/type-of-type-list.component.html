@@ -1,0 +1,68 @@
+<!--TypeOfType-->
+    <md-card fxFlex="100">
+  <md-card-title>List</md-card-title>
+  <md-card-subtitle></md-card-subtitle>
+  <md-card-content>
+    <button id="addButton" kendoButton [primary]="true" [routerLink]="['new']" [attr.aria-label]="Add">Add</button>
+    <br /> <br />
+    <parentFilterAndPaging #parentFilterAndPagingRef [paginationData]="paginationData" [query]="query" [filterType]="filterType" [fieldFilterModel]="fieldFilterModel" [filterValue]="filterValue" (onListClicked)="getList()" (onPageChanged)="pageChanged($event)"
+      (onUpdatingSort)="updateSort($event.value)" (onUpdatingFilter)="updateFilter($event)">
+    </parentFilterAndPaging>
+    <br />
+    <kendo-grid
+      *ngIf="listWithCount" 
+      [data]="gridView"
+      [pageSize]="query.top"
+      [skip]="query.skip"
+      [height]="300" 
+      [pageable]="true" 
+      [sortable]="{ mode: 'single' }" 
+      [sort]="sort" 
+      (pageChange)="gridPageChanged($event)" 
+      (sortChange)="sortChange($event)">
+      <kendo-grid-column title="Actions" width="120">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <button kendoButton class="edit-item" [primary]="true" (click)="edit(dataItem)" [attr.aria-label]="edit"><md-icon>edit</md-icon></button>
+          <button kendoButton class="delete-item" [primary]="true" (click)="delete(dataItem.id)" [attr.aria-label]="delete"><md-icon>delete</md-icon></button>
+        </ng-template>
+      </kendo-grid-column>
+      
+      <!--id-->
+      <kendo-grid-column field="id" title="Id"></kendo-grid-column>
+      <!--abbreviation-->
+      <kendo-grid-column field="abbreviation" title="Abbreviation"></kendo-grid-column>
+      <!--createdBy-->
+      <kendo-grid-column field="createdBy" title="CreatedBy"></kendo-grid-column>
+      <!--createdDate-->
+      <kendo-grid-column title="CreatedDate">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          {{ dataItem.createdDate | date:"MM/dd/yyyy" }}      
+        </ng-template>
+      </kendo-grid-column>
+      <!--isActive-->
+      <kendo-grid-column field="isActive" title="IsActive"></kendo-grid-column>
+      <!--key-->
+      <kendo-grid-column field="key" title="Key"></kendo-grid-column>
+      <!--name-->
+      <kendo-grid-column field="name" title="Name"></kendo-grid-column>
+      <!--order-->
+      <kendo-grid-column field="order" title="Order"></kendo-grid-column>
+      <!--parentID-->
+      <kendo-grid-column field="parentID" title="ParentID"></kendo-grid-column>
+      <!--typeID-->
+      <kendo-grid-column field="typeID" title="TypeID"></kendo-grid-column>
+      <!--uid-->
+      <kendo-grid-column field="uid" title="Uid"></kendo-grid-column>
+      <!--updatedBy-->
+      <kendo-grid-column field="updatedBy" title="UpdatedBy"></kendo-grid-column>
+      <!--updatedDate-->
+      <kendo-grid-column title="UpdatedDate">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          {{ dataItem.updatedDate | date:"MM/dd/yyyy" }}      
+        </ng-template>
+      </kendo-grid-column>
+      <!--value-->
+      <kendo-grid-column field="value" title="Value"></kendo-grid-column>
+    </kendo-grid>
+  </md-card-content>
+</md-card>

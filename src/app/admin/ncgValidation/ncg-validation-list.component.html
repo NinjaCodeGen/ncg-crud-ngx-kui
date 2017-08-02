@@ -1,0 +1,42 @@
+<!--NcgValidation-->
+    <md-card fxFlex="100">
+  <md-card-title>List</md-card-title>
+  <md-card-subtitle></md-card-subtitle>
+  <md-card-content>
+    <button id="addButton" kendoButton [primary]="true" [routerLink]="['new']" [attr.aria-label]="Add">Add</button>
+    <br /> <br />
+    <parentFilterAndPaging #parentFilterAndPagingRef [paginationData]="paginationData" [query]="query" [filterType]="filterType" [fieldFilterModel]="fieldFilterModel" [filterValue]="filterValue" (onListClicked)="getList()" (onPageChanged)="pageChanged($event)"
+      (onUpdatingSort)="updateSort($event.value)" (onUpdatingFilter)="updateFilter($event)">
+    </parentFilterAndPaging>
+    <br />
+    <kendo-grid
+      *ngIf="listWithCount" 
+      [data]="gridView"
+      [pageSize]="query.top"
+      [skip]="query.skip"
+      [height]="300" 
+      [pageable]="true" 
+      [sortable]="{ mode: 'single' }" 
+      [sort]="sort" 
+      (pageChange)="gridPageChanged($event)" 
+      (sortChange)="sortChange($event)">
+      <kendo-grid-column title="Actions" width="120">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <button kendoButton class="edit-item" [primary]="true" (click)="edit(dataItem)" [attr.aria-label]="edit"><md-icon>edit</md-icon></button>
+          <button kendoButton class="delete-item" [primary]="true" (click)="delete(dataItem.id)" [attr.aria-label]="delete"><md-icon>delete</md-icon></button>
+        </ng-template>
+      </kendo-grid-column>
+      
+      <!--id-->
+      <kendo-grid-column field="id" title="Id"></kendo-grid-column>
+      <!--valEmailAddressPattern-->
+      <kendo-grid-column field="valEmailAddressPattern" title="ValEmailAddressPattern"></kendo-grid-column>
+      <!--valMin0Max100Value-->
+      <kendo-grid-column field="valMin0Max100Value" title="ValMin0Max100Value"></kendo-grid-column>
+      <!--valMin2Max8Length-->
+      <kendo-grid-column field="valMin2Max8Length" title="ValMin2Max8Length"></kendo-grid-column>
+      <!--valRequiredField-->
+      <kendo-grid-column field="valRequiredField" title="ValRequiredField"></kendo-grid-column>
+    </kendo-grid>
+  </md-card-content>
+</md-card>

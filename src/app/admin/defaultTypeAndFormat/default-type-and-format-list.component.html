@@ -1,0 +1,58 @@
+<!--DefaultTypeAndFormat-->
+    <md-card fxFlex="100">
+  <md-card-title>List</md-card-title>
+  <md-card-subtitle></md-card-subtitle>
+  <md-card-content>
+    <button id="addButton" kendoButton [primary]="true" [routerLink]="['new']" [attr.aria-label]="Add">Add</button>
+    <br /> <br />
+    <parentFilterAndPaging #parentFilterAndPagingRef [paginationData]="paginationData" [query]="query" [filterType]="filterType" [fieldFilterModel]="fieldFilterModel" [filterValue]="filterValue" (onListClicked)="getList()" (onPageChanged)="pageChanged($event)"
+      (onUpdatingSort)="updateSort($event.value)" (onUpdatingFilter)="updateFilter($event)">
+    </parentFilterAndPaging>
+    <br />
+    <kendo-grid
+      *ngIf="listWithCount" 
+      [data]="gridView"
+      [pageSize]="query.top"
+      [skip]="query.skip"
+      [height]="300" 
+      [pageable]="true" 
+      [sortable]="{ mode: 'single' }" 
+      [sort]="sort" 
+      (pageChange)="gridPageChanged($event)" 
+      (sortChange)="sortChange($event)">
+      <kendo-grid-column title="Actions" width="120">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <button kendoButton class="edit-item" [primary]="true" (click)="edit(dataItem)" [attr.aria-label]="edit"><md-icon>edit</md-icon></button>
+          <button kendoButton class="delete-item" [primary]="true" (click)="delete(dataItem.id)" [attr.aria-label]="delete"><md-icon>delete</md-icon></button>
+        </ng-template>
+      </kendo-grid-column>
+      
+      <!--id-->
+      <kendo-grid-column field="id" title="Id"></kendo-grid-column>
+      <!--someArray-->
+      <kendo-grid-column field="someArray" title="SomeArray"></kendo-grid-column>
+      <!--someBoolean-->
+      <kendo-grid-column field="someBoolean" title="SomeBoolean"></kendo-grid-column>
+      <!--someIntegerInt32-->
+      <kendo-grid-column field="someIntegerInt32" title="SomeIntegerInt32"></kendo-grid-column>
+      <!--someNumber-->
+      <kendo-grid-column field="someNumber" title="SomeNumber"></kendo-grid-column>
+      <!--someNumberDouble-->
+      <kendo-grid-column field="someNumberDouble" title="SomeNumberDouble"></kendo-grid-column>
+      <!--someString-->
+      <kendo-grid-column field="someString" title="SomeString"></kendo-grid-column>
+      <!--someStringDateTime-->
+      <kendo-grid-column title="SomeStringDateTime">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          {{ dataItem.someStringDateTime | date:"MM/dd/yyyy" }}      
+        </ng-template>
+      </kendo-grid-column>
+      <!--someStringEmail-->
+      <kendo-grid-column field="someStringEmail" title="SomeStringEmail"></kendo-grid-column>
+      <!--someStringUid-->
+      <kendo-grid-column field="someStringUid" title="SomeStringUid"></kendo-grid-column>
+      <!--someStringUri-->
+      <kendo-grid-column field="someStringUri" title="SomeStringUri"></kendo-grid-column>
+    </kendo-grid>
+  </md-card-content>
+</md-card>
