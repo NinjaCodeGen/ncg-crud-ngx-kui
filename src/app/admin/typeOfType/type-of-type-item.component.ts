@@ -141,6 +141,27 @@ export class TypeOfTypeItemComponent extends BaseItemComponent<TypeOfType> {
         )
       ] : null,
       
+      concurrencyStamp: this.formMetaData.properties.concurrencyStamp ? [
+          this.formMetaData.properties.concurrencyStamp['x-ncg'].defaultValue ? this.formMetaData.properties.concurrencyStamp['x-ncg'].defaultValue : null,
+          Validators.compose(
+          this.validationService.generateValidators(this.formMetaData.properties.concurrencyStamp['x-ncg'].validations)
+        )
+      ] : null,
+      
+      created: this.formMetaData.properties.created ? [
+          this.formMetaData.properties.created['x-ncg'].defaultValue ? this.formMetaData.properties.created['x-ncg'].defaultValue : null,
+          Validators.compose(
+          this.validationService.generateValidators(this.formMetaData.properties.created['x-ncg'].validations)
+        )
+      ] : null,
+      
+      issuerValue: this.formMetaData.properties.issuerValue ? [
+          this.formMetaData.properties.issuerValue['x-ncg'].defaultValue ? this.formMetaData.properties.issuerValue['x-ncg'].defaultValue : null,
+          Validators.compose(
+          this.validationService.generateValidators(this.formMetaData.properties.issuerValue['x-ncg'].validations)
+        )
+      ] : null,
+      
       name: this.formMetaData.properties.name ? [
           this.formMetaData.properties.name['x-ncg'].defaultValue ? this.formMetaData.properties.name['x-ncg'].defaultValue : null,
           Validators.compose(
@@ -194,6 +215,13 @@ export class TypeOfTypeItemComponent extends BaseItemComponent<TypeOfType> {
           this.formMetaData.properties.value['x-ncg'].defaultValue ? this.formMetaData.properties.value['x-ncg'].defaultValue : null,
           Validators.compose(
           this.validationService.generateValidators(this.formMetaData.properties.value['x-ncg'].validations)
+        )
+      ] : null,
+      
+      users: this.formMetaData.properties.users ? [
+          this.formMetaData.properties.users['x-ncg'].defaultValue ? this.formMetaData.properties.users['x-ncg'].defaultValue : null,
+          Validators.compose(
+          this.validationService.generateValidators(this.formMetaData.properties.users['x-ncg'].validations)
         )
       ] : null,
     });
