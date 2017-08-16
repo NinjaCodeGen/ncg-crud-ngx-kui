@@ -42,7 +42,6 @@
             <small id="usersErrorMsgs" *ngFor="let error of formMetaData.properties.users['x-ncg'].errors" class="md-text-warn">{{error.message}}</small>
           </div>
         
-          <div *ngIf="!myForm.valid" class="ui error message">Form is invalid</div>
         </md-card-content>
         <hr>
         <md-card-actions>
